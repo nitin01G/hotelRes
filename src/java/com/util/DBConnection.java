@@ -8,7 +8,7 @@ public class DBConnection {
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://localhost:3306/hotel";
     private static final String USER = "root";
-    private static final String PASS = "shetty7639";
+    private static final String PASS = "NewPassword123!";
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection connection = null;

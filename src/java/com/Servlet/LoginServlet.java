@@ -1,7 +1,7 @@
-package com.Servlet;
+package com.servlet;
 
 import com.bean.LoginBean;
-import com.Dao.LoginDao;
+import com.dao.LoginDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

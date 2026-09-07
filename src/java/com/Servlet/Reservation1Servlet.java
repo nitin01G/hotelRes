@@ -1,7 +1,8 @@
-package com.Servlet;
+package com.servlet;
 
-import com.Dao.Reservation1Dao;
 import com.bean.Reservation1Bean;
+import com.dao.Reservation1Dao;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

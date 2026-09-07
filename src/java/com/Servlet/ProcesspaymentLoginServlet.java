@@ -1,7 +1,7 @@
-package com.Servlet;
+package com.servlet;
 
 import com.bean.Processpaymentbean;
-import com.Dao.ProcesspaymentDao;
+import com.dao.ProcesspaymentDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +34,15 @@ public class ProcesspaymentLoginServlet extends HttpServlet {
 
         // Save payment to the database
         ProcesspaymentDao dao = new ProcesspaymentDao();
-        boolean isSaved = dao.savePayment(payment);
+        boolean isSaved;
+        try {
+            isSaved = dao.savePayment(payment);
+        } catch (ClassNotFoundException e) {
+            // Preserve the existing failure behavior when the JDBC driver is unavailable.
+            e.printStackTrace();
+            response.sendRedirect("paymentFailed.jsp");
+            return;
+        }
 
         // Redirect based on success
         if (isSaved && paymentSuccess) {

@@ -11,6 +11,24 @@
     <description>Builds, tests, and runs the project HotelReservation.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
+        Build React before NetBeans copies web/ into the staging directory.
+        This only adds generated assets; legacy JSPs and static files remain
+        untouched and continue to be included by the standard web build.
+    -->
+    <target name="build-frontend">
+        <exec executable="cmd" dir="frontend" failonerror="true">
+            <arg value="/c"/>
+            <arg value="npm"/>
+            <arg value="run"/>
+            <arg value="build"/>
+        </exec>
+        <copy todir="${web.docbase.dir}" overwrite="true">
+            <fileset dir="frontend/dist"/>
+        </copy>
+    </target>
+
+    <target name="-pre-compile" depends="build-frontend"/>
+    <!--
 
     There exist several targets which are by default empty and which can be 
     used for execution of your tasks. These targets are usually executed 
