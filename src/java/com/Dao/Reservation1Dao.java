@@ -1,4 +1,4 @@
-package com.Dao;
+package com.dao;
 
 import com.bean.Reservation1Bean;
 import java.sql.*;
@@ -40,7 +40,10 @@ public class Reservation1Dao {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
-            String query = "SELECT COUNT(*) FROM reservation1 WHERE hotelId=?";
+            // ConfirmReservationDao persists confirmed bookings in reservations.
+            // Count that same model so the existing four-booking rule applies
+            // to confirmed bookings.
+            String query = "SELECT COUNT(*) FROM reservations WHERE hotel_id=?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, hotelId);
             ResultSet rs = ps.executeQuery();

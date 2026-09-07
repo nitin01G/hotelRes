@@ -1,7 +1,7 @@
-package com.Servlet;
+package com.servlet;
 
 import com.bean.ReservationHotel;
-import com.Dao.ReservationHotelDao;
+import com.dao.ReservationHotelDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
